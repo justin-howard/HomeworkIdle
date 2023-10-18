@@ -1,4 +1,7 @@
 # HomeworkIdle
 
+Idle clicker
 
-https://justin-howard.github.io/HomeworkIdle/
+Work In Progress
+
+Please leave any feedback.
