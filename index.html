@@ -1,15 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework Idle</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homework Idle Game</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #007bff;
+    }
+
+    p {
+      margin-bottom: 8px;
+    }
+
+    #notificationContainer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      max-width: 300px;
+      overflow: hidden;
+    }
+
+    .notification {
+      background-color: #ddd;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+    }
+
+    #leaderboard {
+      list-style: none;
+      padding: 0;
+    }
+
+    #leaderboard li {
+      margin-bottom: 10px;
+    }
+
+    body[data-theme="Dark"] {
+      background-color: #333;
+      color: #fff;
+    }
+
+    /* Style for bordered groups */
+    .group-container {
+      margin-top: 20px;
+      border: 2px solid #007bff;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    select {
+      margin: 10px 0;
+      padding: 5px;
+    }
+
+    #upgradeInfo {
+      margin-top: 20px;
+    }
+
+    #upgradeTree {
+      margin-top: 20px;
+    }
+
+    /* Style for super upgrades */
+    #superUpgradesList {
+      list-style: none;
+      padding: 0;
+    }
+
+    #superUpgradesList li {
+      margin-bottom: 10px;
+    }
+
+    #superUpgradesList button {
+      padding: 5px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #superUpgradesList button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
+
 <body>
-    <p id="homeworkCompleted">0 Homework Completed</p>
-    <button onclick="completeHomework()">Complete Homework</button>
-    <button onclick="buyHomeworkPerClick()" id="perClickUpgrade">Upgrade Pencil (Currently Level 1) Cost: 10 Homework</button>
-    <script src="main.js" charset="utf-8" type="text/javascript"></script>
+  <h1>Homework Idle Game</h1>
+
+  <div class="group-container">
+    <p>Homework Completed: <span id="homeworkCompleted">0</span></p>
+    <p>Per Click Upgrade: <span id="perClickUpgrade">Upgrade Pencil (Level 1) Cost: 10 Homework</span></p>
+    <p>Auto Clicker Upgrade: <span id="autoClickerUpgrade">Buy Auto-Clicker (Cost: 50 Homework)</span></p>
+
+    <div>
+      <button id="completeHomeworkButton" title="Click to complete homework manually.">Complete Homework</button>
+      <button id="perClickUpgradeButton" title="Cost: 10 Homework. Upgrade to increase homework per click.">Upgrade Pencil</button>
+      <button id="autoClickerUpgradeButton" title="Cost: 50 Homework. Buy an auto-clicker to automate homework completion.">Buy Auto-Clicker</button>
+    </div>
+  </div>
+
+  <div class="group-container">
+    <div>
+      <button id="resetGameButton" title="Click to reset your game progress.">Reset Game</button>
+      <button id="saveGameButton">Save Game</button>
+    </div>
+
+    <select id="themeDropdown">
+      <option value="Default">Default</option>
+      <option value="Dark">Dark</option>
+      <!-- Add more theme options as needed -->
+    </select>
+  </div>
+
+  <div class="group-container">
+    <div id="upgradeInfo">
+      <h2>Upgrade Info</h2>
+      <p id="upgradeDescription">Hover over an upgrade button to see its description.</p>
+    </div>
+
+    <ul id="leaderboard"></ul>
+
+    <!-- Add a container for notifications on the right side of the screen -->
+    <div id="notificationContainer"></div>
+    <!-- Add a container for regular upgrades on the right side of the screen -->
+    <div id="upgradeTree"></div>
+
+    <!-- Display super upgrades -->
+    <h2>Super Upgrades</h2>
+    <ul id="superUpgradesList"></ul>
+  </div>
+
+  <script src="main.js"></script>
 </body>
+
 </html>
