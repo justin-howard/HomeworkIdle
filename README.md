@@ -4,4 +4,6 @@ Idle clicker
 
 Work In Progress
 
-Please leave any feedback.
+This project is an experiment with developing AI models such as ChatGPT from openai.
+
+Please take into consiferation that this project has been made almost entirely with ai. Expect errors to occur.
